@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Bian 🌻</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@600;800&display=swap');
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            /* Fondo cálido primaveral */
+            background: linear-gradient(135deg, #fff9e6 0%, #ffde66 100%);
+            font-family: 'Nunito', sans-serif;
+            color: #4a4a4a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow: hidden;
+        }
+        
+        .container {
+            background-color: #ffffff;
+            border: 4px dashed #ffb300;
+            border-radius: 25px;
+            padding: 40px 30px;
+            max-width: 550px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(255, 179, 0, 0.2);
+            position: relative;
+        }
+        
+        h1 { 
+            font-family: 'Fredoka One', cursive; 
+            color: #f59e0b; 
+            margin-bottom: 15px; 
+            font-size: 2rem;
+            text-shadow: 1px 1px 0px #ffde66;
+        }
+        
+        p { font-size: 1.2rem; line-height: 1.6; margin-bottom: 25px; color: #78350f; }
+        
+        .btn {
+            background: linear-gradient(45deg, #fbbf24, #f59e0b);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 800;
+            font-family: 'Nunito', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+            margin-top: 10px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .btn:hover { 
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+            background: linear-gradient(45deg, #f59e0b, #ea580c);
+        }
+
+        /* Ocultar secciones */
+        .seccion { display: none; animation: fadeIn 0.8s ease; position: relative; }
+        .activa { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Galería de fotos */
+        .galeria-flores {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .galeria-flores img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 3px solid #ffde66;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Clases para los nuevos GIFs */
+        .gif-lluvia {
+            position: absolute; 
+            top: -40px; 
+            left: -30px; 
+            width: calc(100% + 60px); 
+            height: calc(100% + 80px); 
+            object-fit: cover; 
+            opacity: 0.4; 
+            pointer-events: none; 
+            mix-blend-mode: multiply; 
+            border-radius: 25px; 
+            z-index: 0;
+        }
+
+        .gif-centro {
+            max-width: 160px; 
+            margin: -10px auto 15px auto; 
+            display: block; 
+            mix-blend-mode: multiply;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .contenido-frente {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- PÁGINA 1 -->
+        <div id="pag1" class="seccion activa">
+            <!-- Lluvia de flores de fondo -->
+            <img src="assets/d59e58781ea814807c668444681e696d.gif" class="gif-lluvia" alt="Lluvia de flores">
+            
+            <div class="contenido-frente">
+                <!-- Flores sonrientes -->
+                <img src="assets/15-10-39-863_512.gif" class="gif-centro" alt="Flores felices">
+                
+                <h1>¡Feliz día de la Primavera!</h1>
+                <p>Como no te puedo dar flores físicamente hoy, traté de igual dártelas de una forma especial...</p>
+                <button class="btn" onclick="cambiarPagina('pag2')">Te adoro 💛</button>
+            </div>
+        </div>
+
+        <!-- PÁGINA 2 -->
+        <div id="pag2" class="seccion">
+            <div class="contenido-frente">
+                <h1>Para mi niñita 💛</h1>
+                <p>Hoy salí y estuve en busca de florcitas lindas que me hubiese gustado darte en persona.</p>
+                
+                <div class="galeria-flores">
+                    <img src="assets/flor1.jpg" alt="Flor 1" onerror="this.onerror=null; this.src='assets/flor1.jfif';">
+                    <img src="assets/flor2.jpg" alt="Flor 2" onerror="this.onerror=null; this.src='assets/flor2.jfif';">
+                    <img src="assets/flor3.jpg" alt="Flor 3" onerror="this.onerror=null; this.src='assets/flor3.jfif';">
+                    <img src="assets/flor4.jpg" alt="Flor 4" onerror="this.onerror=null; this.src='assets/flor4.jfif';">
+                </div>
+
+                <button class="btn" onclick="cambiarPagina('pag3')">Muack💛</button>
+            </div>
+        </div>
+
+        <!-- PÁGINA 3 -->
+        <div id="pag3" class="seccion">
+            <div class="contenido-frente">
+                <!-- Ramo de flores -->
+                <img src="assets/4681b1f0cf7843447246b29483d55931.gif" class="gif-centro" style="max-width: 140px;" alt="Ramo de flores">
+                
+                <h1>¡Feliz 21 de Septiembre!</h1>
+                <p>Te quiero mucho linda, te mereces todos los regalitos lindos en estas fechas especiales 🌻</p>
+                <h2 style="color: #f59e0b; font-family: 'Fredoka One', cursive; margin-top: 30px;">— Tu novio gay 🐈💛</h2>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function cambiarPagina(idSiguiente) {
+            // Oculta todas las secciones
+            let secciones = document.querySelectorAll('.seccion');
+            secciones.forEach(sec => sec.classList.remove('activa'));
+            
+            // Muestra la sección pedida
+            document.getElementById(idSiguiente).classList.add('activa');
+
+            // Si es la última página, lanzar confeti amarillo
+            if(idSiguiente === 'pag3') {
+                lanzarConfeti();
+            }
+        }
+
+        function lanzarConfeti() {
+            var duration = 3 * 1000;
+            var animationEnd = Date.now() + duration;
+            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+            function randomInRange(min, max) { return Math.random() * (max - min) + min; }
+
+            var interval = setInterval(function() {
+                var timeLeft = animationEnd - Date.now();
+                if (timeLeft <= 0) { return clearInterval(interval); }
+
+                var particleCount = 50 * (timeLeft / duration);
+                confetti(Object.assign({}, defaults, { 
+                    particleCount, 
+                    origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+                    colors: ['#FFD700', '#FFA500', '#FFFF00', '#ffffff']
+                }));
+                confetti(Object.assign({}, defaults, { 
+                    particleCount, 
+                    origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+                    colors: ['#FFD700', '#FFA500', '#FFFF00', '#ffffff']
+                }));
+            }, 250);
+        }
+    </script>
+</body>
+</html>
